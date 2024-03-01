@@ -155,7 +155,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
+    "rootEnvPath": "../../../.env",
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
@@ -173,8 +173,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum Role {\n  ADMIN\n  CUSTOMER\n}\n\nmodel User {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  email        String     @unique\n  refreshToken String?    @map(\"refresh_token\")\n  hashPassword String     @map(\"hash_password\")\n  UserRole     UserRole[]\n\n  @@map(\"users\")\n}\n\nmodel UserRole {\n  id        String   @id @default(cuid())\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  role Role @default(CUSTOMER)\n\n  user   User   @relation(fields: [userId], references: [id])\n  userId String @map(\"user_id\")\n\n  @@map(\"user_roles\")\n}\n",
-  "inlineSchemaHash": "4e1f400f3eb7b599b2ae4dcd85fab5dfc5dbbb12a096cb67ec19874c16f358f9",
+  "inlineSchema": "// This is your Prisma schema file,\r\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\r\n\r\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\r\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\r\n\r\ngenerator client {\r\n  provider = \"prisma-client-js\"\r\n  output   = \"generated/client\"\r\n}\r\n\r\ndatasource db {\r\n  provider = \"postgresql\"\r\n  url      = env(\"DATABASE_URL\")\r\n}\r\n\r\nenum Role {\r\n  ADMIN\r\n  CUSTOMER\r\n}\r\n\r\nmodel User {\r\n  id        String   @id @default(cuid())\r\n  createdAt DateTime @default(now()) @map(\"created_at\")\r\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\r\n\r\n  email        String     @unique\r\n  refreshToken String?    @map(\"refresh_token\")\r\n  hashPassword String     @map(\"hash_password\")\r\n  UserRole     UserRole[]\r\n\r\n  @@map(\"users\")\r\n}\r\n\r\nmodel UserRole {\r\n  id        String   @id @default(cuid())\r\n  createdAt DateTime @default(now()) @map(\"created_at\")\r\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\r\n\r\n  role Role @default(CUSTOMER)\r\n\r\n  user   User   @relation(fields: [userId], references: [id])\r\n  userId String @map(\"user_id\")\r\n\r\n  @@map(\"user_roles\")\r\n}\r\n",
+  "inlineSchemaHash": "ff03c4f8136f4d0a3717858691f99df786c02a77605ad70edfe55464bc75a5e2",
   "copyEngine": true
 }
 config.dirname = '/'
